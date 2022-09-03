@@ -89,8 +89,8 @@ const displayNewsDetails = idNumber => {
                                 </div>
                             </label>
                             <div class="ml-2 lg:ml-5">
-                                <p>${news.author.name}</p>
-                                <p>${news.author.published_date}</p>
+                                <p>${news.author.name ? news.author.name: 'Not Found'}</p>
+                                <p>${news.author.published_date ? news.author.published_date: 'not updated'}</p>
                             </div>
                         </div>
 
@@ -103,7 +103,7 @@ const displayNewsDetails = idNumber => {
                                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
 
-                            <p class="ml-3"> ${news.total_view}M</p>
+                            <p class="ml-3"> ${news.total_view ? news.total_view: '00'}M</p>
                         </div>
                         <div class="rating">
                             <input type="radio" name="rating-1" class="mask mask-star" />
