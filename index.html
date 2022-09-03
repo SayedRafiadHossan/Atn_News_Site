@@ -21,7 +21,7 @@
             <div class="navbar-end lg:flex lg:mr-8">
                 <ul class="menu menu-horizontal p-0">
                     <li class=""><button>News</button></li>
-                    <li><button onclick="myFuntion()">Blog</button></li>
+                    <li><button id="blog-click">Blog</button></li>
                     <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                         <div class="w-10 rounded-full">
                             <img src="https://placeimg.com/80/80/people" />
@@ -97,31 +97,31 @@
         <!-- Question Answer part -->
 
         
-        <section class="Faq">
+        <section id="hide-section" class=" hidden">
             <div class="container-fluid id="load">
                 <h2>Frequently Asked Question(FAQs)</h2>
                 <div class="according">
                     <div class="icon"></div>
-                    <h5>What is Lorem Ipsum?</h5>
+                    <h5>what is difference between var, let and const?</h5>
                 </div>
                 <div class="panel">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, ut.</p>
+                    <p>var variables can be updated and re-declared within its scope; let variables can be updated but not re-declared; const variables can neither be updated nor re-declared.</p>
                 </div>
 
                 <div class="according">
                     <div class="icon"></div>
-                    <h5>What is Lorem Ipsum?</h5>
+                    <h5>What is different between map filter and foreach?</h5>
                 </div>
                 <div class="panel">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, ut.</p>
+                    <p></p>
                 </div>
 
                 <div class="according">
                     <div class="icon"></div>
-                    <h5>What is Lorem Ipsum?</h5>
+                    <h5>What is different between arrow and regular funtion?</h5>
                 </div>
                 <div class="panel">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, ut.</p>
+                    <p>Unlike regular functions, arrow functions do not have their own this . The value of this inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of this in the closest non-arrow parent function.</p>
                 </div>
 
                 <div class="according">
@@ -133,10 +133,6 @@
                 </div>
             </div>
         </section>
-
-
-
-
 
         <!-- Question Answer part end -->
     </main>

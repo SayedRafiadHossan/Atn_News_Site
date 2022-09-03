@@ -168,13 +168,10 @@ const newsModalDetails = newsModal => {
 loadNews();
 loadNewsDetails();
 
-// FAQ-----------------
+document.getElementById('blog-click').addEventListener('click',function(){
 
-function myFuntion() {
-    var x = document.getElementById("load");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
+    const hideBtn = document.getElementById('hide-section');
+
+    hideBtn.classList.remove('hidden');
+
+})
