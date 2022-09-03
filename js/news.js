@@ -55,18 +55,21 @@ const displayNews = (allNews, dataLimit) => {
     `;
     newsContainer.appendChild(navberDiv);
     console.log(news);
-
 }
 
 const loadNewsDetails = async category_id => {
     toggleSpinner(true);
     const url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
     const res = await fetch(url);
-    const data = await res.json();
-    displayPhoneDetails(data.data);
+    const data = await res.json()
+    const sortedData = await data.data.sort((a, b) => b.total_view - a.total_view);
+    displayPhoneDetails(sortedData);
 }
 
 const displayPhoneDetails = idNumber => {
+    const totalNews = document.getElementById('count');
+    totalNews.innerText = idNumber.length;
+    
     const newsShows = document.getElementById('news-container');
     newsShows.innerHTML = '';
     idNumber.forEach(news => {
@@ -76,7 +79,7 @@ const displayPhoneDetails = idNumber => {
             <figure><img class="w-96" src="${news.thumbnail_url}" alt="Album"></figure>
             <div class="card-body">
                     <h2 class="card-title">${news.title}</h2>
-                    <p class="">${news.details} </p>
+                    <p class="text-ellipsis overflow-hidden h-52">${news.details} </p>
                     <div class="card-actions justify-between items-center mt-8 lg:mt-0">
                         <div class="flex mb-10 lg:mb-0">
                             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
