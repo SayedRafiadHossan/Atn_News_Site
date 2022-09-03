@@ -59,6 +59,7 @@ const displayNews = (allNews, dataLimit) => {
 }
 
 const loadNewsDetails = async category_id => {
+    toggleSpinner(true);
     const url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -69,13 +70,13 @@ const displayPhoneDetails = idNumber => {
     const newsShows = document.getElementById('news-container');
     newsShows.innerHTML = '';
     idNumber.forEach(news => {
-        const phoneDiv = document.createElement('div');
-        phoneDiv.innerHTML = `
+        const newsDiv = document.createElement('div');
+        newsDiv.innerHTML = `
         <div class="card lg:card-side bg-base-200 shadow-xl mb-7">
             <figure><img class="w-96" src="${news.thumbnail_url}" alt="Album"></figure>
             <div class="card-body">
                     <h2 class="card-title">${news.title}</h2>
-                    <p>${news.details} </p>
+                    <p class="">${news.details} </p>
                     <div class="card-actions justify-between items-center mt-8 lg:mt-0">
                         <div class="flex mb-10 lg:mb-0">
                             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
@@ -107,16 +108,30 @@ const displayPhoneDetails = idNumber => {
                             <input type="radio" name="rating-1" class="mask mask-star" />
                             <input type="radio" name="rating-1" class="mask mask-star" />
                         </div>
-                        <label for="my-modal-3" class="btn modal-button"><i class="fa-solid fa-arrow-right"></i></label>
+                        <label class="btn modal-button"><i class="fa-solid fa-arrow-right"></i></label>
                     </div>
             </div>
         </div>
 
     `;
-        newsShows.appendChild(phoneDiv);
-
+        newsShows.appendChild(newsDiv);
+        toggleSpinner(false);
     });
+    // stop spiner
 
 }
+
+// Loader---------------
+const toggleSpinner = isLoading =>{
+    const loaderSection = document.getElementById('loader');
+    if(isLoading){
+        loaderSection.classList.remove('hidden');
+    }
+    else{
+        loaderSection.classList.add('hidden');
+    }
+}
+// Loader End---------------
+
 loadNewsDetails();
 loadNews();
