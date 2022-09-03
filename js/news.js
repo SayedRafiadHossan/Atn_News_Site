@@ -78,7 +78,7 @@ const displayNewsDetails = idNumber => {
         <div class="card lg:card-side bg-base-200 shadow-xl mb-7">
             <figure><img class="w-96" src="${news.thumbnail_url}" alt="Album"></figure>
             <div class="card-body">
-                    <h2 class="card-title">${news.title}</h2>
+                    <h1 class="card-title font-serif ">${news.title}</h1>
                     <p class="overflow-hidden h-52">${news.details} </p>
                     <p class="truncate">${news.details} </p>
                     <div class="card-actions justify-between items-center mt-8 lg:mt-0">
