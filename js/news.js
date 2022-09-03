@@ -140,7 +140,7 @@ const toggleSpinner = isLoading =>{
 }
 // Loader End---------------
 
-// modal---------------------
+// modal start ---------------------
 
 const newsDetails = async news_id => {
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
