@@ -167,3 +167,14 @@ const newsModalDetails = newsModal => {
 
 loadNews();
 loadNewsDetails();
+
+// FAQ-----------------
+
+function myFuntion() {
+    var x = document.getElementById("load");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
