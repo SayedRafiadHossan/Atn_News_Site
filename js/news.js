@@ -169,9 +169,10 @@ loadNews();
 loadNewsDetails();
 
 document.getElementById('blog-click').addEventListener('click',function(){
-
     const hideBtn = document.getElementById('hide-section');
-
-    hideBtn.classList.remove('hidden');
-
+    if(hideBtn.classList.contains("hidden")){
+        hideBtn.classList.remove('hidden');
+    }else{
+        hideBtn.classList.add('hidden');
+    }
 })
