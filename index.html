@@ -77,20 +77,26 @@
 
         </section>
 
-        <input type="checkbox" id="my-modal-3" class="modal-toggle" />
-        <div class="modal">
-            <div class="modal-box relative">
-                <figure><img class="w-full" src="${news.thumbnail_url}" alt="Album"></figure>
-                <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-                <p class="py-4">You've been selected for a chance to get one year of subscription to use
-                    Wikipedia for free!</p>
+        <!-- modal -->
+
+        <section>
+            <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+            <div class="modal">
+                <div class="modal-box relative">
+                    <img id="modal-div" class="mb-4">
+    
+                    </img>
+                    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <h3 id="newsDetails" class="text-lg font-bold mb-4"></h3>
+                    <h3>Author Name: <span id="author-name"></span></h3>
+                    <h3>Publish Date: <span id="data-publised"></span></h3>
+                </div>
             </div>
-        </div>
-        <hr  class="hidden lg:block">
+        </section>
+
+        <!-- Question And=swer part -->
     </main>
-    <footer class="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900
-    ">
+    <footer class="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
         <div class="sm:flex sm:items-center sm:justify-between"> 
             <ul class="flex justify-center items-center mb-6 w-full text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
                 <li>

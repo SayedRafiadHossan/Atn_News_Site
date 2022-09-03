@@ -1,4 +1,4 @@
-const loadNews = async (search, dataLimit) => {
+const loadNews = async (dataLimit) => {
     try {
         const url = `https://openapi.programming-hero.com/api/news/categories`
         const res = await fetch(url);
@@ -10,7 +10,7 @@ const loadNews = async (search, dataLimit) => {
     }
 }
 
-const displayNews = (allNews, dataLimit) => {
+const displayNews = (allNews) => {
     const newsContainer = document.getElementById('news-btn');
     const navberDiv = document.createElement('div');
     navberDiv.innerHTML = `
@@ -63,10 +63,10 @@ const loadNewsDetails = async category_id => {
     const res = await fetch(url);
     const data = await res.json()
     const sortedData = await data.data.sort((a, b) => b.total_view - a.total_view);
-    displayPhoneDetails(sortedData);
+    displayNewsDetails(sortedData);
 }
 
-const displayPhoneDetails = idNumber => {
+const displayNewsDetails = idNumber => {
     const totalNews = document.getElementById('count');
     totalNews.innerText = idNumber.length;
     
@@ -79,7 +79,8 @@ const displayPhoneDetails = idNumber => {
             <figure><img class="w-96" src="${news.thumbnail_url}" alt="Album"></figure>
             <div class="card-body">
                     <h2 class="card-title">${news.title}</h2>
-                    <p class="text-ellipsis overflow-hidden h-52">${news.details} </p>
+                    <p class="overflow-hidden h-52">${news.details} </p>
+                    <p class="truncate">${news.details} </p>
                     <div class="card-actions justify-between items-center mt-8 lg:mt-0">
                         <div class="flex mb-10 lg:mb-0">
                             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
@@ -111,15 +112,18 @@ const displayPhoneDetails = idNumber => {
                             <input type="radio" name="rating-1" class="mask mask-star" />
                             <input type="radio" name="rating-1" class="mask mask-star" />
                         </div>
-                        <label class="btn modal-button"><i class="fa-solid fa-arrow-right"></i></label>
+                        <label onclick="newsDetails('${news._id}')" for="my-modal-3" class="btn modal-button">
+                        <i class="fa-solid fa-arrow-right">
+                        </i>
+                        </label>
                     </div>
             </div>
         </div>
-
     `;
         newsShows.appendChild(newsDiv);
         toggleSpinner(false);
     });
+
     // stop spiner
 
 }
@@ -136,5 +140,30 @@ const toggleSpinner = isLoading =>{
 }
 // Loader End---------------
 
-loadNewsDetails();
+// modal---------------------
+
+const newsDetails = async news_id => {
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    newsModalDetails(data.data[0]);
+}
+
+const newsModalDetails = newsModal => {
+    console.log(newsModal);
+    const imageDisplay = document.getElementById('modal-div');
+    imageDisplay.innerHTML = `
+    <img class="w-full" src="${newsModal.thumbnail_url}" alt="Album">
+    `;
+    const modalTitle = document.getElementById('newsDetails');
+    modalTitle.innerText = newsModal.title;
+
+    const authorName = document.getElementById('author-name');
+    authorName.innerText = newsModal.author.name;
+
+    const datePublised = document.getElementById('data-publised');
+    datePublised.innerText = newsModal.author?.published_date;
+}
+
 loadNews();
+loadNewsDetails();
